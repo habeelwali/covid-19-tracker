@@ -1,0 +1,51 @@
+.container{
+    width:100% !important;
+    position: relative;
+    margin: 2%  0 !important;
+    margin-bottom: 0% !important;
+  
+  
+  
+  background-color: rgb(115, 138, 182);
+  }
+  .txt{
+    width: 640px !important;
+    
+    color: cornsilk;
+    align-items: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left:0%;
+  
+  }
+  
+  
+  @media (max-width:770px){
+     
+      .container{
+         
+          
+          width:100% !important;
+          position: relative;
+          margin: 2%  0 !important;
+          margin-bottom: 0% !important;
+        
+        
+        
+        background-color: rgb(87, 106, 141);
+       
+      }
+      .txt{
+          width: 340px !important;
+          font-size: 1.1rem !important;
+          color: cornsilk;
+          align-items: center;
+          margin-top: 5%;
+          margin-bottom: 5%;
+          margin-left:10%;
+  
+      }
+      .img{
+          background: white;
+      }
+    }
