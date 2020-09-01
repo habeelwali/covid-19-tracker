@@ -6,9 +6,7 @@
   
   
 }
-.country{
-  background: url(./components/covid1.jpg) no-repeat center  center/cover;
-}
+
 @media (max-width:770px){
   .App{
     margin: 0 10%;
