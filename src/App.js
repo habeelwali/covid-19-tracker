@@ -1,26 +1,55 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import NaveBar from './components/Navebar/NaveBar';
+import Cards from './components/Cards/Cards'
+import Chart from './components/Charts/Chart'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { fatchData } from './Api/Api'
+import Footer from './components/footer/Footer'
+import './App.css'
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Home from './components/Home/Home';
+class App extends React.Component {
+  state = {
+    data: {},
+    country: '',
+  }
+  async componentDidMount() {
+    const fatchedData = await fatchData();
+    this.setState({ data: fatchedData })
+  }
+
+  handleCountryChange = async (country) => {
+    const fatchedData = await fatchData(country);
+    this.setState({ data: fatchedData, country: country });
+
+  }
+
+  render() {
+    const { data, country } = this.state;
+    return (
+      <div className="conatiner">
+
+        < NaveBar handleCountryChange={this.handleCountryChange} />
+
+
+        <div className="App">
+          <Switch>
+            <Route exact path="/" component={Home} />
+
+            <Route exict path="/cases">
+              <Cards data={data} />
+              <Chart data={data} country={country} />
+            </Route>
+
+            <Redirect to="/"/>
+          
+          </Switch>
+        </div>
+        <Footer/>
+      </div>
+    );
+  }
 }
 
 export default App;
+
